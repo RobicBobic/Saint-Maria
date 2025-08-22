@@ -38,7 +38,7 @@ const SaintMariaTerminal = () => {
     }, 10000);
 
     return () => clearInterval(verseInterval);
-  }, []);
+  }, [bibleVerses]);
 
   // Auto-increment prayer counter
   useEffect(() => {
