@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './index.css';
 
 const SaintMariaTerminal = () => {
@@ -8,8 +8,8 @@ const SaintMariaTerminal = () => {
   const [currentBibleVerse, setCurrentBibleVerse] = useState('');
   const [showBibleSection, setShowBibleSection] = useState(true);
 
-  // Bible verses array
-  const bibleVerses = [
+  // Bible verses array (memoized to prevent re-creation on every render)
+  const bibleVerses = useMemo(() => [
     "And Mary said: My soul magnifies the Lord, and my spirit rejoices in God my Savior. - Luke 1:46-47",
     "Behold, I am the handmaid of the Lord; let it be done unto me according to your word. - Luke 1:38",
     "Hail Mary, full of grace, the Lord is with you. Blessed are you among women. - Luke 1:28",
@@ -20,7 +20,8 @@ const SaintMariaTerminal = () => {
     "Woman, behold your son. Behold, your mother. - John 19:26-27",
     "Do whatever he tells you. - John 2:5",
     "Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen. - Traditional Prayer"
-  ];
+  ], []);
+  
   const [isAutoIncrementing, setIsAutoIncrementing] = useState(true);
   const terminalRef = useRef(null);
 
